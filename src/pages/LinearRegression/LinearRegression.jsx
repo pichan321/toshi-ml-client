@@ -14,7 +14,7 @@ export default function LinearRegression() {
     const [modelPage, setModelPage] = useState(false) 
     const [currentModel, setCurrentModel] = useState(null) 
     const [modal, setModal] = useState(false)
-    const [models, setModels] = useState([])
+    const [models, setModels] = useState(null)
     const [modelName, setModalName] = useState("")
     const [modelDescription, setModelDescription] = useState("")
 
@@ -44,7 +44,7 @@ export default function LinearRegression() {
     
     async function createModel() {
         const response = await fetcher("POST", "/create-model", {name: modelName, description: modelDescription, model_type: "linear-regression"})
-        closeModelPage()
+        setModal(false)
         getModels()
         
     }
@@ -60,15 +60,16 @@ export default function LinearRegression() {
             {modelPage ? <Model model={currentModel} closeModelPage={() => closeModelPage()}/> :
             <div>
             <h1>Linear Regression</h1>
-            <IconButton icon={<Add/>} onClick={() => setModal(true)}/>
+            <IconButton icon={<Add/>} onClick={() => setModal(true)} style={{position: "absolute", top: "1em", right: "1em"}}/>
             <div > 
-                {models.map(model => {
+                {models && models.map(model => {
                     return (
                         <div>
                             <Card title={model.name} description={model.description} id={model.id} open={() => openModelPage(model)} getModels={getModels}/>
                         </div>
                         )
                 })}
+          
             </div>
 
             <Modal size={"lg"} open={modal} onClose={handleClose}>

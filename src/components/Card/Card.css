@@ -1,10 +1,15 @@
 .card {
     position: relative;
-    left: 5em;
+    left: 6em;
     background: white;
-    width: calc(100vw - 20em);
+    width: 70%;
+    margin-right: 1em;
     height: 10em;
     border-radius: 15px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.delete-button {
     cursor: pointer;
 }

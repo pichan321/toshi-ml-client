@@ -10,12 +10,12 @@ export default function Card({title, description, id, open, getModels}) {
     }
 
     return (
-        <div style={{display: "flex", alignItems: "center"}}>
+        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
         <div className="card" style={{margin: "1em"}} onClick={() => open()}>
-            <p>{title && title}</p>
-            <p>{description && description}</p>
+            <p>Model Name: {title && title}</p>
+            <p>Model Description: {description && description}</p>
         </div>
-        <div style={{position: "relative"}} onClick={() => deleteModel()}>
+        <div style={{position: "relative"}} onClick={() => deleteModel()} className="delete-button">
                 <img src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" alt="" width={30} height={30}/>
         </div>
         </div>
