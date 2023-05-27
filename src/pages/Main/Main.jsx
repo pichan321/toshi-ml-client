@@ -18,7 +18,6 @@ export default function Main() {
         displayName: "Linear Regression",
         subtypes: [
             {name: "simple", displayName: "Simple"},
-            {name: "multiple", displayName: "Multiple" },
             {name: "polynomial", displayName: "Polynomial"},
         ]
         })
@@ -65,7 +64,7 @@ export default function Main() {
 
         useEffect(() => {
             getModels()
-        }, [currentLearningAlgorithm])
+        }, [currentLearningAlgorithm, current])
     
     
         useEffect(() => {
@@ -74,9 +73,9 @@ export default function Main() {
 
     return (
         <div>
-            <SideBar setCurrent={setCurrent}/>
+            <SideBar setCurrent={setCurrent} setCurrentLearningAlgorithm={setCurrentLearningAlgorithm}/>
             <div>
-            {modelPage ? <Model model={currentModel} closeModelPage={() => closeModelPage()}/> :
+            {modelPage ? <Model model={currentModel} closeModelPage={() => closeModelPage()} learningAlgorithm={currentLearningAlgorithm}/> :
             <div>
             <h1>{current?.displayName}</h1>
             <Tabs>
