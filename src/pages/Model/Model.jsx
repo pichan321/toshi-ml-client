@@ -142,6 +142,10 @@ export default function Model({model, closeModelPage, learningAlgorithm}) {
            
             <br/>
             <h5 className="">API URL: {`http://localhost:8000/api-prediction/${model.id}/value`}</h5>
+            <div className="p-40">
+                <h5>Prediction Body: </h5>
+                <Input as="textarea" rows={3} placeholder="{'values': {'col1': [], 'col2': []}, 'encoded_columns': ['col1']}" value={columns && JSON.stringify(columns.prediction_body)}/>
+            </div>
         </div>
     )
 }
